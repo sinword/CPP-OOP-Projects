@@ -1,0 +1,12 @@
+﻿  Board.cpp
+  ChessGame.cpp
+  GameManager.cpp
+C:\Users\samwa\Desktop\ChessGame\ChessGame\GameManager.cpp(205,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Player.cpp
+C:\Users\samwa\Desktop\ChessGame\ChessGame\Player.cpp(33,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\samwa\Desktop\ChessGame\ChessGame\Player.cpp(62,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Viewer.cpp
+C:\Users\samwa\Desktop\ChessGame\ChessGame\Viewer.cpp(167,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\ChessGame\ChessGame\Viewer.cpp(214,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  ChessGame.vcxproj -> C:\Users\samwa\Desktop\ChessGame\x64\Debug\ChessGame.exe
