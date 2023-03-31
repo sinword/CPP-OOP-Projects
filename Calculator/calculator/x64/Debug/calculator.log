@@ -1,0 +1,27 @@
+﻿  Ari.cpp
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(43,44): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(60,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(243,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(246,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(249,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(266,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(360,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(365,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(624,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(638,26): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(644,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  cal.cpp
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(38,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(43,27): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(102,43): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(123,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(285,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(513,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(617,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  calculator.cpp
+  NumberObject.cpp
+  Generating Code...
+C:\Users\samwa\Desktop\calculator\calculator\cal.cpp(31): warning C4715: 'pri': not all control paths return a value
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(597): warning C4715: 'compare': not all control paths return a value
+C:\Users\samwa\Desktop\calculator\calculator\Ari.cpp(306): warning C4715: 'sub': not all control paths return a value
+  calculator.vcxproj -> C:\Users\samwa\Desktop\calculator\x64\Debug\calculator.exe
