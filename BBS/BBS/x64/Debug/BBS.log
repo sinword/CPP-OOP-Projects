@@ -1,0 +1,26 @@
+﻿  addtionalTool.cpp
+C:\Users\samwa\Desktop\BBS\BBS\addtionalTool.cpp(30,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  BBS.cpp
+  Board.cpp
+  BoardManager.cpp
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(148,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(237,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(259,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(260,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(596,32): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(1082,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\BoardManager.cpp(1084,26): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  mail.cpp
+  Post.cpp
+  User.cpp
+  Viewer.cpp
+C:\Users\samwa\Desktop\BBS\BBS\Viewer.cpp(39,27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\Viewer.cpp(62,36): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\Viewer.cpp(67,36): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\samwa\Desktop\BBS\BBS\Viewer.cpp(73,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  BBS.vcxproj -> C:\Users\samwa\Desktop\BBS\x64\Debug\BBS.exe

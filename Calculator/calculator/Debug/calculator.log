@@ -1,0 +1,20 @@
+﻿  Ari.cpp
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(78,20): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(165,15): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(200,19): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(200,46): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(205,24): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(210,24): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(374,20): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(385,21): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(392,20): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(556,16): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(584,19): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(584,46): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(587,24): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(590,24): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(646,20): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(685,19): warning C4018: '<=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(597): warning C4715: 'compare': 不是所有控制路徑都傳回值
+C:\Users\fs2\Desktop\calculator\calculator\Ari.cpp(306): warning C4715: 'sub': 不是所有控制路徑都傳回值
+  calculator.vcxproj -> C:\Users\fs2\Desktop\calculator\Debug\calculator.exe

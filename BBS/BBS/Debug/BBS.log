@@ -1,0 +1,44 @@
+﻿  BoardManager.cpp
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(56,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(66,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(148,13): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(237,13): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(259,13): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(260,13): warning C4244: '正在初始化': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(335,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(345,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(422,15): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(424,26): warning C4018: '<=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(432,26): warning C4018: '<=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(438,11): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(447,16): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(451,20): warning C4018: '>': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(478,29): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(530,25): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(547,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(560,25): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(570,21): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(607,16): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(609,27): warning C4018: '<=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(617,27): warning C4018: '<=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(623,12): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(632,17): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(636,21): warning C4018: '>': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(664,29): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(716,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(733,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(746,25): warning C4018: '>=': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(756,21): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(814,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(823,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(975,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(985,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1081,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1097,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1194,27): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1204,22): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1275,20): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1332,29): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1347,24): warning C4018: '<': signed/unsigned 不相符
+C:\Users\fs2\Desktop\BBS\BBS\BoardManager.cpp(1562,21): warning C4018: '<': signed/unsigned 不相符
+  BBS.vcxproj -> C:\Users\fs2\Desktop\BBS\Debug\BBS.exe

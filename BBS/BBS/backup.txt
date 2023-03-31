@@ -1,0 +1,612 @@
+#include "BoardManager.h"
+BoardManager::BoardManager() {
+	state = BoardState::LOGIN;
+	refresh();
+	while (true) {
+		switch (state)
+		{
+		case BoardManager::LOGIN:
+			login();
+			break;
+		case BoardManager::MENU:
+			menu();
+			break;
+		case BoardState::PROFILE:
+			profile();
+			break;
+		case BoardManager::SELECT_BOARD:
+			selectboard();
+			break;
+		case BoardManager::BOARD:
+			board();
+			break;
+		case BoardManager::POST:
+			post();
+			break;
+		default:
+			break;
+		}
+	}
+}
+string BoardManager::editMode(string work) {
+	viewer.clear();
+	int textWidth = 40;
+	int strY = 1;
+	int strX = 5;
+	int nX = 0;
+	vector<string> opt;
+	vector<int> optnX;
+	viewer.setNdraw(0, strX, work);
+	gotoyx(1, strX);
+	char c;
+	//string line(textWidth, ' ');
+	string line = "";
+	while (c = _getch()) {
+		string tmp = "";
+		tmp += c;
+		if (c & 0x80) {
+			if (nX + 1 >= textWidth) {
+				strY++;
+				optnX.push_back(line.length());
+				nX = 0;
+				opt.push_back(line);
+				line = "";
+			}
+			tmp += _getch();
+			line.insert(nX, tmp);
+			gotoyx(strY, strX + nX);
+			cout << tmp;
+			nX += 2;
+		}
+		else if (c == 13) {//enter
+			strY++;
+			optnX.push_back(line.length());
+			nX = 0;
+			opt.push_back(line);
+			line = "";
+			gotoyx(strY, strX + nX);
+		}
+		else if (c == 8) {//backspace
+			if (nX > 1) {//可能有中文
+				if (line[nX - 2] & 0x80) {//有中文
+					line.erase(nX - 2, 2);
+					gotoyx(strY, strX);
+					cout << string(textWidth, ' ');
+					gotoyx(strY, strX);
+					cout << line;
+					nX -= 2;
+					gotoyx(strY, strX + nX);
+				}
+				else {
+					line.erase(nX - 1);
+					gotoyx(strY, strX);
+					cout << string(textWidth, ' ');
+					gotoyx(strY, strX);
+					cout << line;
+					nX -= 1;
+					gotoyx(strY, strX + nX);
+				}
+			}
+			else if (nX == 1) {
+				line.erase(nX - 1);
+				gotoyx(strY, strX);
+				cout << string(textWidth, ' ');
+				gotoyx(strY, strX);
+				cout << line;
+				nX -= 1;
+				gotoyx(strY, strX + nX);
+			}
+			else if (nX == 0) {
+				if (opt.size() > 0) {
+					line = *(opt.end() - 1);
+					opt.erase(opt.end() - 1);
+					strY--;
+					nX = *(optnX.end() - 1);
+					optnX.erase(optnX.end() - 1);
+					gotoyx(strY, strX + nX);
+				}
+			}
+		}
+		else if (c == 27) {//esc
+			viewer.setNdraw(13, strX,"發送/停留/放棄(Y/S/N)");
+			string output = "";
+			while (c = _getch()) {
+				switch (c)
+				{
+					case 'Y':
+						opt.push_back(line);
+						for (int i = 0; i < opt.size() - 1; ++i) {
+							output += opt[i];
+							output += "\n";
+						}
+						output += opt[opt.size() - 1];
+						return output;
+					case 'S':
+						break;
+					case 'N':
+						return ""+(char)24;
+					default:
+						continue;
+				}
+			}
+			
+		}else if (c == -32) {//方向鍵
+			c = _getch();
+			if (c == 80) {//down arrow
+				if()
+			}
+			else if (c == 72) {//up arrow
+				
+			}
+			else if (c == 77) {//right arrow
+
+			}
+			else if (c == 75) {//left arrow
+				
+			}
+
+		}
+		else if (isalnum(c)) {
+			if (nX >= textWidth) {
+				strY++;
+				optnX.push_back(line.length());
+				nX = 0;
+				opt.push_back(line);
+				line = "";
+			}
+			line.insert(nX, tmp);
+			gotoyx(strY, strX + nX);
+			cout << tmp;
+			nX++;
+		}
+		
+	}
+	return "";
+}
+
+void BoardManager::profile() {
+	viewer.clear();
+	viewer.setNdraw(5, 10, "帳號(暱稱): " + users[current_user]->account + "(" + users[current_user]->nickname + ")");
+	string cid;
+	switch (users[current_user]->identity)
+	{
+		case 0:
+			cid = "Guest";
+			break;
+		case 1:
+			cid = "Member";
+			break;
+		case 2:
+			cid = "Adiministrator";
+			break;
+	default:
+		break;
+	}
+	viewer.setNdraw(6, 10, "身分組: " + cid);
+	viewer.setNdraw(7, 10, "錢: "+ to_string(users[current_user]->money));
+	while (true) {
+		char chr = _getch();
+		if (chr == -32) {//方向鍵
+			chr = _getch();
+			if (chr == 80) {//down arrow
+
+			}
+			else if (chr == 72) {//up arrow
+
+			}
+			else if (chr == 77) {//right arrow
+
+			}
+			else if (chr == 75) {//left arrow
+				state = BoardState::MENU;
+				return;
+			}
+		}
+	}
+	
+}
+void BoardManager::post() {
+	viewer.clear();
+	Post& post = boards[current_board].postlist[current_post];
+	vector<string> v = post.toarticle();
+	int showlistnum = 15;
+	int strX = 5;
+	int index = 0;
+	while (true) {
+		viewer.setNdraw(20, strX, "推(z)噓(x)回覆(c)");
+		for (int i = 0; i + index < v.size() && i < showlistnum; ++i) {
+			gotoyx(5 + i, strX);
+			viewer.cOneline(5 + i);
+			viewer.setNdraw(5 + i, strX, v[i+index]);
+		}
+		char chr = _getch();
+		if (chr == -32) {//方向鍵
+			chr = _getch();
+			if (chr == 80) {//down arrow
+				if (showlistnum + index < v.size() - 1) {
+					index++;
+				}
+			}
+			else if (chr == 72) {//up arrow
+				if (index > 0) {
+					index--;
+				}
+			}
+			else if (chr == 77) {//right arrow
+
+			}
+			else if (chr == 75) {//left arrow
+				state = BoardState::BOARD;
+				return;
+			}
+			
+		}
+		else if (chr == 'z') {
+			string cn = editMode("Re:" + post.Title);
+			if (cn[0] == (char)24) {
+				continue;
+			}
+			else {
+				post.newComment("0", users[current_user]->account, cn);
+				v = post.toarticle();
+				viewer.clear();
+			}
+		}
+		else if (chr == 'x') {
+			string cn = editMode("Re:" + post.Title);
+			if (cn[0] == (char)24) {
+				continue;
+			}
+			else {
+				post.newComment("1", users[current_user]->account, cn);
+				v = post.toarticle();
+				viewer.clear();
+			}
+		}
+		else if (chr == 'c') {
+			string cn = editMode("Re:" + post.Title);
+			if (cn[0] == (char)24) {
+				continue;
+			}
+			else {
+				post.newComment("2", users[current_user]->account, cn);
+				v = post.toarticle();
+				viewer.clear();
+			}
+		}
+	}
+}
+
+void BoardManager::board() {
+	viewer.clear();
+	int showlistnum = 15;
+	int index = 0;
+	int cursor = 0;
+	vector<Post> &posts = boards[current_board].postlist;
+	while (true) {
+		for (int i = 0; i + index < posts.size() && i < showlistnum; ++i) {
+			gotoyx(10 + i, 20);
+			viewer.cOneline(10 + i);
+			viewer.setNdraw(10 + i, 20, posts[i + index].Title);
+		}
+		viewer.setNdraw(10 + cursor, 18, "->");
+		char chr = _getch();
+		if (chr == -32) {//方向鍵
+			chr = _getch();
+			if (chr == 80) {//down arrow
+				if (index + cursor < posts.size() - 1) {
+					if (cursor < showlistnum - 1) {
+						cursor += 1;
+					}
+					else if (cursor == showlistnum - 1) {
+						index += 1;
+					}
+
+				}
+			}
+			else if (chr == 72) {//up arrow
+				if (cursor > 0) {
+					cursor -= 1;
+				}
+				else if (cursor == 0 && index > 0) {
+					index -= 1;
+				}
+			}
+			else if (chr == 77) {//right arrow
+				 current_post = cursor + index;
+				 state = BoardState::POST;
+				return;
+			}
+			else if (chr == 75) {//left arrow
+				state = BoardState::SELECT_BOARD;
+				return;
+			}
+		}
+	}
+}
+
+
+void BoardManager::selectboard() {
+	viewer.clear();
+	int showlistnum = 15;
+	int index = 0;
+	int cursor = 0;
+	while (true) {
+		for (int i = 0; i + index < boards.size() && i < showlistnum; ++i) {
+			gotoyx(10 + i, 20);
+			viewer.cOneline(10 + i);
+			viewer.setNdraw(10 + i, 20, boards[i + index].name);
+		}
+		viewer.setNdraw(10 + cursor, 18, "->");
+		char chr = _getch();
+		if (chr == -32) {//方向鍵
+			chr = _getch();
+			if (chr == 80) {//down arrow
+				if (index + cursor < boards.size() - 1) {
+					if (cursor < showlistnum - 1) {
+						cursor += 1;
+					}
+					else if (cursor == showlistnum - 1) {
+						index += 1;
+					}
+
+				}
+			}
+			else if (chr == 72) {//up arrow
+				if (cursor > 0) {
+					cursor -= 1;
+				}
+				else if (cursor == 0 && index > 0) {
+					index -= 1;
+				}
+			}
+			else if (chr == 77) {//right arrow
+				current_board = cursor + index;
+				state = BoardState::BOARD;
+				return;
+			}
+			else if (chr == 75) {//left arrow
+				state = BoardState::MENU;
+				return;
+			}
+		}
+	}
+
+}
+
+void BoardManager::menu() {
+	int showlistnum = 15;
+	viewer.clear();
+	vector<string> MENU;
+	MENU.push_back("無分組討論版");
+	MENU.push_back("個人資訊");
+	MENU.push_back("登出");
+	
+	int index = 0;
+	int cursor = 0;
+	while (true) {
+		for (int i = 0; i+index < MENU.size() && i < showlistnum; ++i) {
+			gotoyx(10+i, 20);
+			viewer.cOneline(10 + i);
+			viewer.setNdraw(10+i, 20, MENU[i+index]);
+		}
+		viewer.setNdraw(10 + cursor, 18, "->");
+		char chr = _getch();
+		if (chr == -32) {//方向鍵
+			chr = _getch();
+			if (chr == 80) {//down arrow
+				if (index+cursor < MENU.size() - 1) {
+					if (cursor < showlistnum-1) {
+						cursor += 1;
+					}
+					else if (cursor == showlistnum - 1) {
+						index += 1;
+					}
+
+				}
+			}
+			else if (chr == 72) {//up arrow
+				if (cursor > 0) {
+					cursor -= 1;
+				}
+				else if (cursor == 0 && index > 0) {
+					index -= 1;
+				}
+			}
+			else if (chr == 77) {//right arrow
+				break;
+			}
+		}
+		
+	}
+	switch (cursor + index) {
+		case 0:
+			state = BoardState::SELECT_BOARD;
+			return;
+		case 1:
+			state = BoardState::PROFILE;
+			return;
+		case 2:
+			state = BoardState::LOGIN;
+			return;
+	}
+	
+}
+void BoardManager::signup() {
+	viewer.clear();
+	viewer.setWord(5, 20, "按下ESC以放棄註冊");
+	
+	
+	//帳號
+	viewer.setWord(8, 20, "帳號 ");
+	
+	for (int i = 0; i < 10; ++i)
+		viewer.color[8][25 + i] = 119;
+	viewer.setWord(8, 25, string(10, ' '));
+
+	viewer.draw();
+
+	SetColor(112);
+	string account = viewer.getInput(8,25,9);
+	SetColor(7);
+
+	if (account.empty()) {
+		return;
+	}
+	viewer.setWord(8, 25, account);
+	for (int i = 0; i < 9; ++i)
+		viewer.color[8][25 + i] = 112;
+
+	viewer.draw();
+	//帳號
+
+	//密碼
+	viewer.setWord(13, 20, "密碼 ");
+
+	for (int i = 0; i < 10; ++i)
+		viewer.color[13][25 + i] = 119;
+	viewer.setWord(13, 25, string(10, ' '));
+
+	viewer.draw();
+
+	SetColor(112);
+	string password = viewer.getInput(13, 25, 9);
+	SetColor(7);
+
+	if (password.empty()) {
+		return;
+	}
+	viewer.setWord(13, 25, password);
+	for (int i = 0; i < 9; ++i)
+		viewer.color[13][25 + i] = 112;
+
+	viewer.draw();
+	//密碼
+
+	//暱稱
+	viewer.setWord(18, 20, "暱稱 ");
+
+	for (int i = 0; i < 10; ++i)
+		viewer.color[18][25 + i] = 119;
+	viewer.setWord(18, 25, string(10, ' '));
+
+	viewer.draw();
+
+	SetColor(112);
+	string nickname = viewer.getInput(18, 25, 9);
+	SetColor(7);
+
+	if (nickname.empty()) {
+		return;
+	}
+	viewer.setWord(18, 25, nickname);
+	for (int i = 0; i < 9; ++i)
+		viewer.color[18][25 + i] = 112;
+
+	viewer.draw();
+	//暱稱
+
+	User(account, password, nickname);
+
+	refresh();
+}
+void BoardManager::login() {
+	string acin;
+	int strY = 23;
+	while (true) {
+		viewer.clear();
+		
+		///設定畫面
+		viewer.setWord(strY, 20, "請輸入代號，或以 guest 參觀，或以 new 註冊:");
+		for (int i = 0; i < 10; ++i)
+			viewer.color[strY][63 + i] = 119;
+		viewer.setWord(strY, 63, string(10, ' '));
+		///設定畫面結束
+		viewer.draw();
+
+		//取得輸入
+		SetColor(112);
+		acin = viewer.getInput(strY,63,9);
+		SetColor(7);
+		//取得輸入結束
+
+		//保留帳號顯示
+		viewer.setWord(strY, 63, acin);
+		for (int i = 0; i < 9; ++i)
+			viewer.color[strY][63 + i] = 112;
+		//
+
+		if (acin == "guest") {
+			current_user = 0;//guest的使用者順位為0
+			state = BoardState::MENU;
+			return;
+		}
+		if (acin == "new") {
+			signup();
+			continue;
+		}
+
+		viewer.setWord(strY+1, 20, "請輸入您的密碼:");
+		viewer.draw();
+		
+		string pwin;
+		SetColor(0);
+		pwin = viewer.getInput(strY+1,35,9);
+		SetColor(7);
+
+		for (int i = 0; i < users.size(); ++i) {
+			
+			if (users[i]->account == acin) {
+				if (pwin == users[i]->password) {
+					current_user = i;
+					users[i]->LastLogTime = getTimeString();
+					//進入下一步
+					state = BoardState::MENU;
+					return;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		viewer.cOneline(strY+1);
+		viewer.setWord(strY+1, 20, "密碼不對或無此帳號。請檢查大小寫及有無輸入錯誤。");
+		viewer.draw();
+		Sleep(2000);
+	}
+}
+
+void BoardManager::refresh() {
+	users.clear();
+	ifstream ifs;
+	ifs.open(".\\User\\userlist.txt");
+	string tmp;
+	while (ifs >> tmp) {
+		ifstream userifs;
+		string file = ".\\User\\" + tmp + ".txt";
+		userifs.open(".\\User\\" + tmp + ".txt");
+		int identity;
+		userifs >> identity;
+		if (identity == 1) {//member
+			users.push_back(new Member(tmp));
+		}
+		else if (identity == 2) {
+			users.push_back(new Adiministrator(tmp));
+		}
+		else if (identity == 0) {
+			users.push_back(new Guest(tmp));
+		}
+		userifs.close();
+	}
+	ifs.close();
+
+	boards.clear();
+
+	ifs.open(".\\Board\\boardlist.txt");
+		while (ifs >> tmp) {
+			ifstream boardifs;
+			string file = ".\\Board\\" + tmp + ".txt";
+			boards.push_back(Board(tmp));
+			boardifs.close();
+		}
+}
